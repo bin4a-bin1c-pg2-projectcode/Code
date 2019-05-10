@@ -15,9 +15,9 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
 <!-- Navigation Bar -->
 <div class="w3-bar w3-white w3-large">
   <a href="#" class="w3-bar-item w3-button w3-theme w3-mobile"><i class="fa fa-optin-monster w3-margin-right"></i>Champ data</a>
-  <a href="#rooms" class="w3-bar-item w3-button w3-mobile">Sequenties</a>
-  <a href="#about" class="w3-bar-item w3-button w3-mobile">BLAST</a>
-  <a href="#contact" class="w3-bar-item w3-button w3-mobile">Organisms</a>
+  <a href="#Sequenties" class="w3-bar-item w3-button w3-mobile">Sequenties</a>
+  <a href="#BLAST" class="w3-bar-item w3-button w3-mobile">BLAST</a>
+  <a href="#Organisms" class="w3-bar-item w3-button w3-mobile">Organisms</a>
   </div>
 <!-- Header -->
 <header class="w3-display-container w3-content" style="max-width:1500px;">
@@ -121,23 +121,8 @@ body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", Arial, Helvetica, sans-serif}
 <footer class="w3-padding-32 w3-black w3-center w3-margin-top">
 
     </footer>
-
-<!-- Add Google Maps -->
 <script>
-function myMap() {
-  myCenter=new google.maps.LatLng(41.878114, -87.629798);
-  var mapOptions= {
-    center:myCenter,
-    zoom:12, scrollwheel: false, draggable: false,
-    mapTypeId:google.maps.MapTypeId.ROADMAP
-  };
-  var map=new google.maps.Map(document.getElementById("googleMap"),mapOptions);
 
-  var marker = new google.maps.Marker({
-    position: myCenter,
-  });
-  marker.setMap(map);
-}
 // Dropdown
 function dropFunction() {
   var x = document.getElementById("myDIV");
@@ -165,11 +150,6 @@ function filterFunction() {
   }
 }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
-<!--
-To use this code on your website, get a free API key from Google.
-Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
--->
 
 </body>
 </html>
