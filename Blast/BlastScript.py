@@ -1,12 +1,12 @@
 from Bio.Blast import NCBIWWW
-from Bio.Blast import NCBIXML
 import pandas
 import time
+import datetime
 
 
 def main():
     bestand_lijstsequenties, bestand_lijstsheaders = bestandinlezen()
-    # blast(bestand_lijstsequenties, bestand_lijstsheaders)
+    blast(bestand_lijstsequenties, bestand_lijstsheaders)
     gegevens_blast(bestand_lijstsheaders, bestand_lijstsequenties)
 
 
@@ -31,10 +31,12 @@ def bestandinlezen():
 
 def blast(bestand_lijstsequenties, bestand_lijstheaders):
     bestand = open("test.xml", "w")
-    for i in range(2):
-        time.sleep(25)
+    for i in range(4):
+        time.sleep(15)
+        print("De blast gaat beginnen ", "Nummer: ", i, "Op datum: ", datetime.datetime.now())
         result_handle = NCBIWWW.qblast(program="tblastx", database="nr", sequence=bestand_lijstsequenties[i],
                                        matrix_name="BLOSUM62", expect=4, alignments=1, hitlist_size=10)
+        print("De blast is gestopt ", "Nummer:", i, "Op datum: ", datetime.datetime.now())
         bestand.write(bestand_lijstheaders[i] + "\n")
         bestand.write(result_handle.getvalue())
 
@@ -98,3 +100,4 @@ def gegevens_blast(bestand_lijstsheaders, bestand_lijstsequenties):
 
 
 main()
+
