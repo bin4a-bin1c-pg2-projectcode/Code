@@ -1,0 +1,9 @@
+Username: rp5DHKQnCe
+
+Database: rp5DHKQnCe
+
+Password: enSHvniY78
+
+Host: remotemysql.com
+
+Port: 3306
