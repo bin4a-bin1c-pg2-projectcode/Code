@@ -304,7 +304,7 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
           <div class="w3-half w3-margin-bottom">
               <select name="E_value_parameter">
                  <option value=">=">More</option>
-                 <option value="==">Equal</option>
+                 <option value="=">Equal</option>
                  <option value="<=">Less</option>
               </select>
               <label>E-value</label>
@@ -313,7 +313,7 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
           <div class="w3-half">
             <select name="Score_parameter">
                  <option value=">=">More</option>
-                 <option value="==">Equal</option>
+                 <option value="=">Equal</option>
                  <option value="<=">Less</option>
             </select>
               <label>Score</label>
@@ -324,7 +324,7 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
           <div class="w3-half w3-margin-bottom">
             <select name="percent_identity_parameter">
                  <option value=">=">More</option>
-                 <option value="==">Equal</option>
+                 <option value="=">Equal</option>
                  <option value="<=">Less</option>
               </select>
               <label>Percent identity %</label>
@@ -333,7 +333,7 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
           <div class="w3-half">
             <select name="query_cover_parameter">
                  <option value=">=">More</option>
-                 <option value="==">Equal</option>
+                 <option value="=">Equal</option>
                  <option value="<=">Less</option>
               </select>
               <label>Query cover %</label>
@@ -348,18 +348,18 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
              </div>
               <div class="w3-container">
              <ul class="ks-cboxtags">
-                <li><input type="checkbox" oninput="this.className = ''" id="checkboxread1" name = "checkboxread1" value="read_1"><label for="checkboxread1">Read 1</label></li>
-                <li><input type="checkbox" oninput="this.className = ''" id="checkboxread2" name = "checkboxread2" value="read_2"><label for="checkboxread2">Read 2</label></li>
-                <li><input type="checkbox" oninput="this.className = ''" id="checkboxread3" name = "checkboxread3" value="read_1,read_2"><label for="checkboxread3">Read 1 & 2</label></li>
+                <li><input type="checkbox" oninput="this.className = ''" id="checkboxread1" name = "checkboxread1" value="'read_1'"><label for="checkboxread1">Read 1</label></li>
+                <li><input type="checkbox" oninput="this.className = ''" id="checkboxread2" name = "checkboxread2" value="'read_2'"><label for="checkboxread2">Read 2</label></li>
+                <li><input type="checkbox" oninput="this.className = ''" id="checkboxread3" name = "checkboxread3" value="'read_1' and Read_type = 'read_2'"><label for="checkboxread3">Read 1 & 2</label></li>
              </ul>
           </div>
           <div class="w3-panel w3-wide w3-theme w3-opacity">
               <p >BLAST TYPE</p>
              </div>
               <ul class="ks-cboxtags">
-                <li><input type="checkbox" oninput="this.className = ''" id="checkboxblastx" name = "checkboxblastx" value="blastx"><label for="checkboxblastx">Blastx</label></li>
-                <li><input type="checkbox" oninput="this.className = ''" id="checkboxtblastx" name = "checkboxblastx" value="tblastx"><label for="checkboxtblastx">tBlastx</label></li>
-                <li><input type="checkbox" oninput="this.className = ''" id="checkboxboth" name = "checkboxblastx" value="tblastx, blastx"><label for="checkboxboth">tBlastx & Blastx</label></li>
+                <li><input type="checkbox" oninput="this.className = ''" id="checkboxblastx" name = "checkboxblastx" value="'blastx'"><label for="checkboxblastx">Blastx</label></li>
+                <li><input type="checkbox" oninput="this.className = ''" id="checkboxtblastx" name = "checkboxtblastx" value="'tblastx'"><label for="checkboxtblastx">tBlastx</label></li>
+                <li><input type="checkbox" oninput="this.className = ''" id="checkboxboth" name = "checkboxboth" value="'tblastx' and Blast_type = 'blastx'"><label for="checkboxboth">tBlastx & Blastx</label></li>
               </ul>
 
         </div>
