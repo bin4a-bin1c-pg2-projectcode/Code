@@ -253,7 +253,8 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
     <span class="w3-xlarge w3-text-white">The database with all te info on micro organisms in compost researched with metagenomics</span>
   </div>
 </header>
-    <table>
+    <table class="w3-table-all w3-margin-top w3-hoverable">
+        <td id='Header' class="w3-dark-grey w3-text-white"> Proteins found</td>
         {% for row in data %}
         <tr>
         {% for d in row %}
@@ -262,5 +263,24 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
         </tr>
     {% endfor %}
     </table>
+<script>
+// When the user scrolls the page, execute myFunction
+window.onscroll = function() {myFunction()};
+
+// Get the header
+var header = document.getElementById("Header");
+
+// Get the offset position of the navbar
+var sticky = header.offsetTop;
+
+// Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+</script>
 </body>
 </html>

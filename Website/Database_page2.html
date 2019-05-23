@@ -14,7 +14,6 @@
 
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
-
 body, html {
     height: 100%;
     line-height: 1.8;
@@ -27,9 +26,7 @@ body, html {
 	position: relative;
 	width: 240px;
 	height: 60px;
-
 	border-radius: 27px;
-
 	color: #fff;
 	font: 700 14px/60px "Droid Sans", sans-serif;
 	letter-spacing: 0.05em;
@@ -37,20 +34,16 @@ body, html {
 	text-decoration: none;
 	text-transform: uppercase;
 }
-
 .btn-liquid .inner {
 	position: relative;
-
 	z-index: 2;
 }
-
 .btn-liquid canvas {
 	position: absolute;
 	top: -50px;
 	right: -50px;
 	bottom: -50px;
 	left: -50px;
-
 	z-index: 1;
 }
 #regForm {
@@ -61,11 +54,9 @@ body, html {
   width: 70%;
   min-width: 300px;
 }
-
 h1 {
   text-align: center;
 }
-
 input {
   padding: 10px;
   width: 100%;
@@ -73,17 +64,14 @@ input {
   font-family: Raleway;
   border: 1px solid #aaaaaa;
 }
-
 /* Mark input boxes that gets an error on validation: */
 input.invalid {
   background-color: #ffdddd;
 }
-
 /* Hide all steps by default: */
 .tab {
   display: none;
 }
-
 button {
   background-color: #4CAF50;
   color: #ffffff;
@@ -93,15 +81,12 @@ button {
   font-family: Raleway;
   cursor: pointer;
 }
-
 button:hover {
   opacity: 0.8;
 }
-
 #prevBtn {
   background-color: #bbbbbb;
 }
-
 /* Make circles that indicate the steps of the form: */
 .step {
   height: 15px;
@@ -113,11 +98,9 @@ button:hover {
   display: inline-block;
   opacity: 0.5;
 }
-
 .step.active {
   opacity: 1;
 }
-
 /* Mark the steps that are finished and valid: */
 .step.finish {
   background-color: #4CAF50;
@@ -129,7 +112,6 @@ button:hover {
   background-image: url("https://live.staticflickr.com/2816/33487168601_1ddff1f6c7_b.jpg");
   min-height: 100%;
 }
-
 .w3-bar .w3-button {
   padding: 16px;
 }
@@ -138,7 +120,6 @@ button:hover {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 13px;
 }
-
 ul.ks-cboxtags {
     list-style: none;
     padding: 20px;
@@ -162,12 +143,10 @@ ul.ks-cboxtags li label{
     -webkit-tap-highlight-color: transparent;
     transition: all .2s;
 }
-
 ul.ks-cboxtags li label {
     padding: 8px 12px;
     cursor: pointer;
 }
-
 ul.ks-cboxtags li label::before {
     display: inline-block;
     font-style: normal;
@@ -181,20 +160,17 @@ ul.ks-cboxtags li label::before {
     content: "\f067";
     transition: transform .3s ease-in-out;
 }
-
 ul.ks-cboxtags li input[type="checkbox"]:checked + label::before {
     content: "\f00c";
     transform: rotate(-360deg);
     transition: transform .3s ease-in-out;
 }
-
 ul.ks-cboxtags li input[type="checkbox"]:checked + label {
     border: 2px solid #1bdbf8;
     background-color: #12bbd4;
     color: #fff;
     transition: all .2s;
 }
-
 ul.ks-cboxtags li input[type="checkbox"] {
   display: absolute;
 }
@@ -213,7 +189,6 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
   font-size: 10px; /* Set a font size */
   cursor: pointer; /* Mouse pointer on hover */
 }
-
 /* Darker background on mouse-over */
 .btn:hover {
   background-color: black;
@@ -497,11 +472,8 @@ function onClick(element) {
   var captionText = document.getElementById("caption");
   captionText.innerHTML = element.alt;
 }
-
-
 // Toggle between showing and hiding the sidebar when clicking the menu icon
 var mySidebar = document.getElementById("mySidebar");
-
 function w3_open() {
   if (mySidebar.style.display === 'block') {
     mySidebar.style.display = 'none';
@@ -509,7 +481,6 @@ function w3_open() {
     mySidebar.style.display = 'block';
   }
 }
-
 // Close the sidebar with the close button
 function w3_close() {
     mySidebar.style.display = "none";
@@ -518,7 +489,6 @@ function w3_close() {
 <script>
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
-
 function showTab(n) {
   // This function will display the specified tab of the form...
   var x = document.getElementsByClassName("tab");
@@ -537,7 +507,6 @@ function showTab(n) {
   //... and run a function that will display the correct step indicator:
   fixStepIndicator(n)
 }
-
 function nextPrev(n) {
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
@@ -556,7 +525,6 @@ function nextPrev(n) {
   // Otherwise, display the correct tab:
   showTab(currentTab);
 }
-
 function validateForm() {
   // This function deals with validation of the form fields
   var x, y, i, valid = true;
@@ -565,7 +533,6 @@ function validateForm() {
   // A loop that checks every input field in the current tab:
   for (i = 0; i < y.length; i++) {
     // If a field is empty...
-
   }
   // If the valid status is true, mark the step as finished and valid:
   if (valid) {
@@ -573,7 +540,6 @@ function validateForm() {
   }
   return valid; // return the valid status
 }
-
 function fixStepIndicator(n) {
   // This function removes the "active" class of all steps...
   var i, x = document.getElementsByClassName("step");

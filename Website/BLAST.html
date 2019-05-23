@@ -225,9 +225,9 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
   <div class="w3-bar w3-white w3-card" id="myNavbar">
     <img src="https://media1.tenor.com/images/ab51b48f52f991e82edbb4846794ad47/tenor.gif?itemid=12939685" CLASS="w3-circle w3-border w3-left" width="50px">
       <a href={{ url_for("home") }} class="w3-bar-item w3-button w3-wide ">CHAMPY</a>
-      <a href={{ url_for('protein') }} class="w3-bar-item w3-button">PROTEIN</a>
-      <a href={{ url_for('organisms') }} class="w3-bar-item w3-button">ORGANISM</a>
-      <a href={{ url_for('blast') }} class="w3-bar-item w3-button w3-teal w3-opacity">BLAST</a>
+      <a href={{ url_for("protein") }} class="w3-bar-item w3-button">PROTEIN</a>
+      <a href= {{ url_for("organisms") }} class="w3-bar-item w3-button">ORGANISM</a>
+      <a href={{ url_for("blast") }} class="w3-bar-item w3-button w3-teal w3-opacity">BLAST</a>
     <!-- Right-sided navbar links -->
 
     <!-- Hide right-floated links on small screens and replace them with a menu icon -->
@@ -241,9 +241,9 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
 <!-- Sidebar on small screens when clicking the menu icon -->
 <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
-  <a href={{ url_for('organisms') }} onclick="w3_close()" class="w3-bar-item w3-button">Organism</a>
-  <a href={{ url_for('protein') }} onclick="w3_close()" class="w3-bar-item w3-button">Protein</a>
-  <a href={{ url_for('blast') }} class="w3-bar-item w3-button w3-teal w3-opacity">BLAST</a>
+  <a href={{ url_for("organisms") }} onclick="w3_close()" class="w3-bar-item w3-button">Organism</a>
+  <a href={{ url_for("protein") }} onclick="w3_close()" class="w3-bar-item w3-button">Protein</a>
+  <a href={{ url_for("blast") }} class="w3-bar-item w3-button w3-teal w3-opacity">BLAST</a>
 </nav>
 <!-- https://www.ncbi.nlm.nih.gov/protein/accesiecode -->
 <!-- Header with full-height image -->
@@ -254,14 +254,37 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
     <span class="w3-xlarge w3-text-white">Here you can BLAST a sequence and add it to our ever growing database</span>
   </div>
 </header>
-    <table>
-        {% for row in data %}
-        <tr>
-        {% for d in row %}
-             <td>{{ d }}</td>
-        {% endfor %}
-        </tr>
-    {% endfor %}
-    </table>
+<form method="get">
+<p>
+    <input type="text" name="seq">
+    <input type="submit" value="BLAST!!">
+</form>
+<div class="w3-container">
+    <button onclick="myFunction('Demo1')" class="w3-btn w3-block w3-teal w3-opacity w3-left-align">Searched sequence</button>
+        <div id="Demo1" class="w3-container w3-hide">
+          <h4>Queried sequence</h4>
+          <p>{{ sequentie }}</p>
+        </div>
+    <button onclick="myFunction('Demo2')" class="w3-btn w3-block w3-teal w3-opacity w3-left-align">Validation</button>
+        <div id="Demo2" class="w3-container w3-hide">
+          <h4>What kind of sequence is this</h4>
+          <p>{{ resultaat }}</p>
+        </div>
+    <button onclick="myFunction('Demo3')" class="w3-btn w3-block w3-teal w3-opacity w3-left-align">BLAST result</button>
+        <div id="Demo3" class="w3-container w3-hide">
+          <h4>Found BLAST results:</h4>
+          <p>{{ titel }}</p>
+        </div>
+</div>
+<script>
+function myFunction(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else {
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
 </body>
 </html>
