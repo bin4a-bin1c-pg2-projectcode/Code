@@ -204,12 +204,15 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
       <a href={{ url_for('protein') }} class="w3-bar-item w3-button">PROTEIN</a>
       <a href={{ url_for('organisms') }} class="w3-bar-item w3-button">ORGANISM</a>
       <a href={{ url_for('blast') }} class="w3-bar-item w3-button">BLAST</a>
-    <!-- Right-sided navbar links -->
-    <div class="w3-right w3-hide-small">
+     <div class="w3-right w3-hide-small">
       <a href="#about" class="w3-bar-item w3-button">ABOUT</a>
       <a href="#team" class="w3-bar-item w3-button"><i class="fa fa-group"></i> TEAM</a>
 
     </div>
+      <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-theme w3-opacity " style="width:100%">Click here to search Database</button>
+
+    <!-- Right-sided navbar links -->
+
     <!-- Hide right-floated links on small screens and replace them with a menu icon -->
 
     <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="w3_open()">
@@ -236,7 +239,6 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
   </div>
 </header>
 
-  <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-theme w3-opacity " style="width:100%">Click here to search Database</button>
 
   <div id="id01" class="w3-modal">
     <div class="w3-modal-content">
