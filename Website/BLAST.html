@@ -167,7 +167,7 @@ button:hover {
 <form method="get">
     <div class="custom-select">
     <select name="blast_type" >
-        <option value="0">Select blast type:</option>
+        <option value="0">Click here to select the blast type:</option>
         <option value="blastx">Blastx</option>
         <option value="tblastx">Tblastx</option>
     </select>
@@ -180,19 +180,19 @@ button:hover {
 </form>
 
 <div class="w3-container w3-margin">
-    <button onclick="myFunction('Demo1')" class="w3-btn w3-block w3-teal w3-opacity w3-left-align">Searched sequence</button>
+    <button onclick="myFunction('Demo1')" class="w3-btn w3-block w3-teal w3-opacity w3-left-align w3-border">Click here to see your queried sequence:</button>
         <div id="Demo1" class="w3-container w3-hide">
-          <h4>Queried sequence</h4>
+          <h4>Queried sequence:</h4>
           <p>{{ sequentie }}</p>
         </div>
-    <button onclick="myFunction('Demo2')" class="w3-btn w3-block w3-teal w3-opacity w3-left-align">Validation</button>
+    <button onclick="myFunction('Demo2')" class="w3-btn w3-block w3-teal w3-opacity w3-left-align w3-border">Click here for the validation:</button>
         <div id="Demo2" class="w3-container w3-hide">
-          <h4>What kind of sequence is this</h4>
+          <h4>The sequence is:</h4>
           <p>{{ resultaat }}</p>
         </div>
-    <button onclick="myFunction('Demo3')" class="w3-btn w3-block w3-teal w3-opacity w3-left-align">BLAST result</button>
+    <button onclick="myFunction('Demo3')" class="w3-btn w3-block w3-teal w3-opacity w3-left-align w3-border">Click here to see the BLAST results:</button>
         <div id="Demo3" class="w3-container w3-hide">
-          <h4>Found BLAST results:</h4>
+          <h4>BLAST results:</h4>
           <p>{{ titel }}</p>
         </div>
 </div>
