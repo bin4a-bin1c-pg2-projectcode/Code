@@ -36,16 +36,6 @@ input {
   border: 1px solid #aaaaaa;
 }
 
-/* Mark input boxes that gets an error on validation: */
-input.invalid {
-  background-color: #ffdddd;
-}
-
-/* Hide all steps by default: */
-.tab {
-  display: none;
-}
-
 button {
   background-color: #4CAF50;
   color: #ffffff;
@@ -60,30 +50,6 @@ button:hover {
   opacity: 0.8;
 }
 
-#prevBtn {
-  background-color: #bbbbbb;
-}
-
-/* Make circles that indicate the steps of the form: */
-.step {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbbbbb;
-  border: none;
-  border-radius: 50%;
-  display: inline-block;
-  opacity: 0.5;
-}
-
-.step.active {
-  opacity: 1;
-}
-
-/* Mark the steps that are finished and valid: */
-.step.finish {
-  background-color: #4CAF50;
-}
 /* Full height image header */
 .bgimg-1 {
   background-position: center;
@@ -101,86 +67,8 @@ button:hover {
     font-size: 13px;
 }
 
-ul.ks-cboxtags {
-    list-style: none;
-    padding: 20px;
-}
-ul.ks-cboxtags li{
-  display: inline;
-}
-ul.ks-cboxtags li label{
-    display: inline-block;
-    background-color: rgba(255, 255, 255, .9);
-    border: 2px solid rgba(139, 139, 139, .3);
-    color: #adadad;
-    border-radius: 25px;
-    white-space: nowrap;
-    margin: 3px 0px;
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    transition: all .2s;
-}
 
-ul.ks-cboxtags li label {
-    padding: 8px 12px;
-    cursor: pointer;
-}
 
-ul.ks-cboxtags li label::before {
-    display: inline-block;
-    font-style: normal;
-    font-variant: normal;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased;
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    font-size: 12px;
-    padding: 2px 6px 2px 2px;
-    content: "\f067";
-    transition: transform .3s ease-in-out;
-}
-
-ul.ks-cboxtags li input[type="checkbox"]:checked + label::before {
-    content: "\f00c";
-    transform: rotate(-360deg);
-    transition: transform .3s ease-in-out;
-}
-
-ul.ks-cboxtags li input[type="checkbox"]:checked + label {
-    border: 2px solid #1bdbf8;
-    background-color: #12bbd4;
-    color: #fff;
-    transition: all .2s;
-}
-
-ul.ks-cboxtags li input[type="checkbox"] {
-  display: absolute;
-}
-ul.ks-cboxtags li input[type="checkbox"] {
-  position: absolute;
-  opacity: 0;
-}
-ul.ks-cboxtags li input[type="checkbox"]:focus + label {
-  border: 2px solid #e9a1ff;
-}
-  .btn {
-  background-color: teal; /* Blue background */
-  border: none; /* Remove borders */
-  color: white; /* White text */
-  padding: 6px 5px; /* Some padding */
-  font-size: 10px; /* Set a font size */
-  cursor: pointer; /* Mouse pointer on hover */
-}
-
-/* Darker background on mouse-over */
-.btn:hover {
-  background-color: black;
-}
-        /* The container must be positioned relative: */
 .custom-select {
   position: relative;
   font-family: Arial;
@@ -269,7 +157,7 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
 </nav>
 <!-- https://www.ncbi.nlm.nih.gov/protein/accesiecode -->
 <!-- Header with full-height image -->
-<header class="bgimg-1 w3-display-container w3-grayscale-min w3-opacity" id="home">
+<header class="bgimg-1 w3-display-container w3-opacity" id="home">
   <div class="w3-display-left w3-text-white " style="padding:48px">
     <span class="w3-jumbo w3-hide-small" >BLAST</span><br>
     <span class="w3-xxlarge w3-hide-large w3-hide-medium">BLAST</span><br>
@@ -284,7 +172,7 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
     </select>
     </div>
     <p>
-    <input class="w3-margin" type="text" name="seq">
+    <input class="w3-margin " placeholder="Type your sequence to blast here..." type="text" name="seq">
     <input  type="submit" value="BLAST!!">
     </p>
 </div>
