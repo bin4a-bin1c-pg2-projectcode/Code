@@ -1,4 +1,4 @@
-from flask import Flask, render_template,request
+from flask import Flask, render_template, request
 import mysql.connector
 import re
 from Bio.Blast import NCBIWWW, NCBIXML
@@ -6,12 +6,12 @@ from Bio.Blast import NCBIWWW, NCBIXML
 app = Flask(__name__)
 
 
-@app.route('/', methods=['get','post'])
+@app.route('/', methods=['get', 'post'])
 def home():
     return render_template('Database_page2.html')
 
 
-@app.route('/results', methods=['get','post'])
+@app.route('/results', methods=['get', 'post'])
 def results_filters():
     """ Deze functie maakt eerst 5 lijsten aan met waardes die nodig zijn voor de querys. Daarna wordt er een lege
     lijst aangemaakt: resultaat_kolommen en resultaat_where. Daarna wordt voor elk item in de lijst gekeken of het
@@ -22,7 +22,6 @@ def results_filters():
     lijst_kolommen, resultaat_kolommen, resultaat_where. De functie returnt het resultaat. Als de lengte van de lijst
     resultaat_kolommen 0 is, dan wordt de html pagina result gereturnd met resultaat en lijst_kolommen. Is de lengte van
     de lijst groter als 0, dan wordt de html pagina result gereturnd met resultaat en resultaat_kolommen.
-
     input: waardes checkboxes
     output: return html pagina result, resultaat en resultaat_kolommen of lijst_kolommen
     """
@@ -47,8 +46,9 @@ def results_filters():
     # deze functie wordt aangeroepen om de querys uit te voeren
     resultaat = result_querys(lijst_kolommen, resultaat_kolommen, resultaat_where_)
     # afhankelijk of er gefilterd is op de kolommen krijg je een andere return
+    accesie_index = lijst_kolommen.index("Accessiecode")
     if len(resultaat_kolommen) == 0:
-        return render_template('results.html', data=resultaat, lijst=lijst_kolommen)
+        return render_template('results.html', accesie_index=accesie_index, data=resultaat, lijst=lijst_kolommen)
     if len(resultaat_kolommen) != 0:
         return render_template('results.html', data=resultaat, lijst=resultaat_kolommen)
 
@@ -141,19 +141,19 @@ def result_querys(lijst_kolommen, resultaat_kolommen, resultaat_where):
                                          user="lszlh@hannl-hlo-bioinformatica-mysqlsrv",
                                          db="lszlh",
                                          passwd="619150")
-    cursor = verbinding.cursor()
+    cursor = verbinding.cursor(dictionary=True)
     # de query's die worden uitgevoerd, afhankelijk van de gegevens
     resultaat = ''
     if len(resultaat_kolommen) == 0:
         print("test")
         query = "select {} from seq_read join blast b on seq_read.Read_ID = b.Blast_ID " \
-                "join eiwitten e on b.Blast_ID = e.Prot_id {}"\
+                "join eiwitten e on b.Blast_ID = e.Prot_id {}" \
             .format(" , ".join(lijst_kolommen), " and ".join(resultaat_where))
         cursor.execute(query)
         resultaat = cursor.fetchall()
     if len(resultaat_kolommen) != 0:
         query = "select {} from seq_read join blast b on seq_read.Read_ID = b.Blast_ID " \
-                "join eiwitten e on b.Blast_ID = e.Prot_id {}"\
+                "join eiwitten e on b.Blast_ID = e.Prot_id {}" \
             .format(" , ".join(resultaat_kolommen), " and ".join(resultaat_where))
         cursor.execute(query)
         resultaat = cursor.fetchall()
@@ -164,34 +164,56 @@ def result_querys(lijst_kolommen, resultaat_kolommen, resultaat_where):
 
 @app.route('/organism')
 def organisms():
-    # hier is de query om in de website de lijst met Organisme te laten zien
-    connection = mysql.connector.connect(host="hannl-hlo-bioinformatica-mysqlsrv.mysql.database.azure.com",
-                                         user="lszlh@hannl-hlo-bioinformatica-mysqlsrv",
-                                         db="lszlh",
-                                         passwd="619150")
-    cur = connection.cursor()
-    cur.execute(
-        "select distinct Organisme from blast order by Organisme ")
+    org = request.args.get("organismelijst")
+    org2 = "Where Organisme like '%{}%'".format(org)
 
-    data = cur.fetchall()
-    return render_template('organism.html', data=data)
+    if org == None:
+        # hier is de query om in de website de lijst met Organisme te laten zien
+        connection = mysql.connector.connect(host="hannl-hlo-bioinformatica-mysqlsrv.mysql.database.azure.com",
+                                             user="lszlh@hannl-hlo-bioinformatica-mysqlsrv",
+                                             db="lszlh",
+                                             passwd="619150")
+        cur = connection.cursor(dictionary=True)
+        cur.execute(
+            "select distinct Organisme,Score,E_value,Actual_ID,Percent_ident,Accessiecode,Query_cover,Taxonomie from blast order by Organisme ")
+
+        data = cur.fetchall()
+        return render_template('organism.html', data=data)
+    else:
+        connection = mysql.connector.connect(host="hannl-hlo-bioinformatica-mysqlsrv.mysql.database.azure.com",
+                                             user="lszlh@hannl-hlo-bioinformatica-mysqlsrv",
+                                             db="lszlh",
+                                             passwd="619150")
+        cur = connection.cursor(dictionary=True)
+        query = "select distinct Organisme,Score,E_value,Actual_ID,Percent_ident,Accessiecode,Query_cover,Taxonomie from blast {} order by Organisme".format(org2)
+
+        cur.execute(query)
+
+        data = cur.fetchall()
+        return render_template('organism.html', data=data)
 
 
 @app.route('/protein')
 def protein():
+    prot = request.args.get("proteinlijst")
+    prot2 = "Where Prot_naam like '%{}%'".format(prot)
     # hier is de query om in de website de lijst met eiwitten te laten zien
     connection = mysql.connector.connect(host="hannl-hlo-bioinformatica-mysqlsrv.mysql.database.azure.com",
                                          user="lszlh@hannl-hlo-bioinformatica-mysqlsrv",
                                          db="lszlh",
                                          passwd="619150")
-    cur = connection.cursor()
-    cur.execute(
-        "select distinct Prot_naam from eiwitten order by Prot_naam")
+    cur = connection.cursor(dictionary=True)
+    if prot == None:
+        cur.execute(
+            "select distinct Prot_naam, Score,E_value,Actual_ID,Percent_ident,Accessiecode,Query_cover,Taxonomie from eiwitten join blast on Prot_id = Actual_ID order by Prot_naam")
 
-    data = cur.fetchall()
-    return render_template('protein.html', data=data)
-
-
+        data = cur.fetchall()
+        return render_template('protein.html', data=data)
+    else:
+        query = "select distinct Prot_naam, Score,E_value,Actual_ID,Percent_ident,Accessiecode,Query_cover,Taxonomie from eiwitten join blast on Prot_id = Actual_ID {} order by Prot_naam".format(prot2)
+        cur.execute(query)
+        data = cur.fetchall()
+        return render_template('protein.html', data=data)
 @app.route('/blast')
 def blast():
     """" Deze functie gaat controleren of de opgegeven sequentie een DNA, RNA of eiwit sequentie is. Als de sequentie
@@ -200,6 +222,7 @@ def blast():
     met een bericht dat het geen van beide is. Dit allemaal wordt weergegeven op een HTML pagina
     """
     sequentie = request.args.get("seq")
+    add = request.args.get("adding")
     dna = False
     rna = False
     eiwit = False
@@ -216,6 +239,8 @@ def blast():
             anders = True
     resultaat = resultaat_beschrijving(dna, rna, eiwit, anders)
     titel = blasten(dna, sequentie)
+    if adding is not None:
+        add_data = adding(add)
     return render_template('BLAST.html', sequentie=sequentie, resultaat=resultaat, titel=titel)
 
 
@@ -244,7 +269,7 @@ def blasten(dna, sequentie):
             blast_resultaat, titel = tblastx_blasten(sequentie)
     else:
         titel = ''
-        
+
     if titel == '':
         titel = "There is no match with: {}".format(sequentie)
     else:
@@ -283,7 +308,6 @@ def blastx_blasten(sequentie):
 
     return blast_resultaat, titel
 
-
 def tblastx_blasten(sequentie):
     titel = ''
     blast_resultaat = []
@@ -313,6 +337,8 @@ def tblastx_blasten(sequentie):
 
     return blast_resultaat, titel
 
+def adding(add):
+    
 
 if __name__ == '__main__':
     app.run()

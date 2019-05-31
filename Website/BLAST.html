@@ -13,7 +13,6 @@
     <title>Organisms</title>
     <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Raleway", sans-serif}
-
 body, html {
     height: 100%;
     line-height: 1.8;
@@ -21,33 +20,8 @@ body, html {
 * {
     box-sizing: border-box;
 }
-
-
-
 h1 {
   text-align: center;
-}
-
-input {
-  padding: 10px;
-  width: 100%;
-  font-size: 17px;
-  font-family: Raleway;
-  border: 1px solid #aaaaaa;
-}
-
-button {
-  background-color: #4CAF50;
-  color: #ffffff;
-  border: none;
-  padding: 10px 20px;
-  font-size: 17px;
-  font-family: Raleway;
-  cursor: pointer;
-}
-
-button:hover {
-  opacity: 0.8;
 }
 
 /* Full height image header */
@@ -58,30 +32,16 @@ button:hover {
   min-height: 300px;
 }
 
-.w3-bar .w3-button {
-  padding: 16px;
-}
-    .container {
-    max-width: 640px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 13px;
-}
-
-
-
 .custom-select {
   position: relative;
   font-family: Arial;
 }
-
 .custom-select select {
   display: none; /*hide original SELECT element: */
 }
-
 .select-selected {
   background-color: Teal;
 }
-
 /* Style the arrow inside the select element: */
 .select-selected:after {
   position: absolute;
@@ -93,13 +53,11 @@ button:hover {
   border: 6px solid transparent;
   border-color: #fff transparent transparent transparent;
 }
-
 /* Point the arrow upwards when the select box is open (active): */
 .select-selected.select-arrow-active:after {
   border-color: transparent transparent #fff transparent;
   top: 7px;
 }
-
 /* style the items (options), including the selected item: */
 .select-items div,.select-selected {
   color: #ffffff;
@@ -108,7 +66,6 @@ button:hover {
   border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
   cursor: pointer;
 }
-
 /* Style items (options): */
 .select-items {
   position: absolute;
@@ -118,12 +75,10 @@ button:hover {
   right: 0;
   z-index: 99;
 }
-
 /* Hide the items when the select box is closed: */
 .select-hide {
   display: none;
 }
-
 .select-items div:hover, .same-as-selected {
   background-color: rgba(0, 0, 0, 0.1);
 }
@@ -173,8 +128,8 @@ button:hover {
     </select>
     </div>
     <p>
-    <input class="w3-margin " placeholder="Type your sequence to blast here..." type="text" name="seq">
-    <input  type="submit" value="BLAST!!">
+    <input class="w3-margin w3-block" placeholder="Type your sequence to blast here..." type="text" name="seq">
+    <input  class="w3-button w3-teal w3-margin-left" type="submit" value="BLAST!!">
     </p>
 </div>
 </form>
@@ -192,10 +147,28 @@ button:hover {
         </div>
     <button onclick="myFunction('Demo3')" class="w3-btn w3-block w3-teal w3-opacity w3-left-align w3-border">Click here to see the BLAST results:</button>
         <div id="Demo3" class="w3-container w3-hide">
-          <h4>BLAST results:</h4>
-          <pre>{{ titel }}</pre>
+          <div class="w3-panel w3-card-4">
+              <h4>BLAST results:</h4></div>
+            <div class="w3-card-4">
+                <div class="w3-panel w3-teal">
+                    <p class="w3-wide w3-margin-top"> ALLIGNMENT</p>
+                        <form>
+                    <input type="checkbox" name="adding" value="hellooo">
+                            <button type="submit" class="w3-button w3-white w3-margin-bottom" >ADD +</button>
+                </form>
+                </div>
+                <p class="w3-border w3-padding w3-margin-left w3-margin-right w3-wide"><span class="w3-tag w3-teal w3-margin-right w3-opacity">Organism:</span>{{ organism }}</p>
+                <p class="w3-border w3-padding w3-margin-left w3-margin-right w3-wide"><span class="w3-tag w3-teal w3-margin-right w3-opacity">Protein :</span>{{ protein }}</p>
+                <p class="w3-border w3-padding w3-margin-left w3-margin-right w3-wide"><span class="w3-tag w3-teal w3-margin-right w3-opacity">Sequence :</span>{{ sequentiet }}</p>
+                <p class="w3-border w3-padding w3-margin-left w3-margin-right w3-wide"><span class="w3-tag w3-teal w3-margin-right w3-opacity">Length of allignment :</span>{{ length }}</p>
+                <p class="w3-border w3-padding w3-margin-left w3-margin-right w3-wide"><span class="w3-tag w3-teal w3-margin-right w3-opacity">E-value :</span>{{ evalue}}</p>
+                <pre class="w3-border w3-padding w3-margin-left w3-margin-right w3-center">Segment of allignment
+
+{{ alignment }}</pre>
+            </div>
         </div>
 </div>
+
 <script>
     var x, i, j, selElmnt, a, b, c;
 /*look for any elements with the class "custom-select":*/
@@ -279,23 +252,18 @@ function myFunction(id) {
 }
 // Get the modal
 var modal = document.getElementById("myModal");
-
 // Get the button that opens the modal
 var btn = document.getElementById("myBtn");
-
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-
 // When the user clicks on the button, open the modal
 btn.onclick = function() {
   modal.style.display = "block";
 }
-
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
 }
-
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
   if (event.target == modal) {
