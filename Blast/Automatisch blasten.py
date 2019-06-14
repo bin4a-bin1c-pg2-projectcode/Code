@@ -1,3 +1,6 @@
+# maker: Inge
+# voert het autmatisch blasten uit voor de 200 sequenties en zet het om naar tekstbestand om het makkelijk in de database toe te voegen
+
 from Bio.Blast import NCBIWWW
 import pandas
 import time
