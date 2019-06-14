@@ -47,6 +47,7 @@ def vullen(content, conn, cursor):
 
     for line in content:
         count += 1
+        # elke regel in het bestand wordt geteld
 
     for i in range(0, count):
 
@@ -65,6 +66,8 @@ def vullen(content, conn, cursor):
                 seq = resultlijst[1]
 
                 if teller2 < 172:
+                    # als de teller2 onder de 172 zit betekent dat dat er
+                    # blastx resultaten in die regels staan staan
                     eiwitnaam1 = resultlijst[3].split("[")
                     organisme1 = resultlijst[3].split("[")
                 Accessiecode1 = resultlijst[4].split(":")
@@ -74,19 +77,21 @@ def vullen(content, conn, cursor):
                 Identity1 = resultlijst[8].split(":")
                 resultlijst = []
                 ID += 1
-                q = header[headercount-1]
+                type = header[headercount-1]
 
                 if teller2 >= 172:
+                    # als de teller2 boven of gelijk aan 172 is betekent dat
+                    # dat er tblastx resultaten in die regels staan
                     organisme2 = resultlijst[3].split(",")
 
-                if q == '2':
+                if type == '2':
                     cursor.execute(
                         "insert into seq_read(Read_ID,Read_type,"
                         "Header,Sequentie)VALUES (%s,2,'%s',"
                         "'%s')" % (ID, header, seq))
                     conn.commit()
 
-                if q == '1':
+                if type == '1':
                     cursor.execute("insert into seq_read(Read_ID,"
                                    "Read_type,Header,Sequentie)VALUES (%s,1,"
                                    "'%s','%s')" % (ID, header, seq))
@@ -188,6 +193,6 @@ def vullen(content, conn, cursor):
                 ID2 += 1
 
     conn.close()
-
+    # connector wordt gesloten omdat alle informatie in de database is gezet
 
 main()
