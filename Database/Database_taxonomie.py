@@ -1,3 +1,6 @@
+# maker: Inge
+# haalt voor elke accessiecode in de database de taxonomie op en voegt deze weer toe bij de juiste accessiecode in de database
+
 from Bio import Entrez, SeqIO
 import mysql.connector
 import time
